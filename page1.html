@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sofia Grassivaro - Wig Making & Styling</title>
+    <title>Sofia Grassivaro - Runway</title>
     <link href="https://fonts.googleapis.com/css2?family=ModernoOT:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -117,7 +117,7 @@
             margin-bottom: 10px;
         }
         
-        /* New Gallery Styles */
+        /* Gallery Styles */
         .gallery-container {
             max-width: 1200px;
             margin: 40px auto;
@@ -208,26 +208,26 @@
         .lightbox-content {
             position: relative;
             width: 90%;
-            height: 90%;
+            height: auto;
             max-width: 1200px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
         }
         
         .lightbox-img-container {
             position: relative;
             width: 100%;
-            height: 90%;
+            max-height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 20px;
         }
         
         .lightbox-img {
             max-width: 100%;
-            max-height: 100%;
+            max-height: 80vh;
             object-fit: contain;
             opacity: 0;
             transform: scale(0.95);
@@ -239,18 +239,28 @@
             transform: scale(1);
         }
         
-        .lightbox-caption {
-            position: absolute;
-            bottom: -40px;
-            left: 0;
+        .lightbox-text-container {
             width: 100%;
             text-align: center;
             color: #fff;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Avenir Book', 'Avenir', sans-serif;
+            padding: 0 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .lightbox-title {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            opacity: 1;
+        }
+        
+        .lightbox-description {
             font-size: 16px;
-            letter-spacing: 0.5px;
+            line-height: 1.6;
             opacity: 0.8;
-            padding: 10px 0;
+            margin-bottom: 20px;
         }
         
         .lightbox-nav {
@@ -309,7 +319,7 @@
         
         .lightbox-index {
             position: absolute;
-            bottom: -70px;
+            bottom: 10px;
             left: 0;
             width: 100%;
             text-align: center;
@@ -360,6 +370,14 @@
             .gallery-item.wide {
                 grid-column: span 1;
             }
+            
+            .lightbox-title {
+                font-size: 20px;
+            }
+            
+            .lightbox-description {
+                font-size: 14px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -384,13 +402,12 @@
                 height: 35px;
             }
             
-            .lightbox-caption {
-                bottom: -50px;
-                font-size: 14px;
+            .lightbox-title {
+                font-size: 18px;
             }
             
-            .lightbox-index {
-                bottom: -80px;
+            .lightbox-description {
+                font-size: 13px;
             }
         }
         
@@ -421,7 +438,19 @@
             }
             
             .lightbox-img {
-                max-height: 70vh;
+                max-height: 60vh;
+            }
+            
+            .lightbox-title {
+                font-size: 16px;
+            }
+            
+            .lightbox-description {
+                font-size: 12px;
+            }
+            
+            .lightbox-text-container {
+                padding: 0 15px;
             }
         }
     </style>
@@ -460,47 +489,113 @@
         
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/img1.jpg" alt=" " loading="lazy">
+                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/img1.jpg" 
+                     alt=" " 
+                     data-description=" "
+                     loading="lazy">
             </div>            
              <div class="gallery-item tall">
-                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/img10.jpg" alt=" " loading="lazy">
+                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/img10.jpg" 
+                     alt=" " 
+                     data-description=" "
+                     loading="lazy">
             </div>
               <div class="gallery-item">
-                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/img9.jpg" alt=" " loading="lazy">
+                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/img9.jpg" 
+                     alt=" " 
+                     data-description=" "
+                     loading="lazy">
             </div>
             <div class="gallery-item wide">
-                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/6.jpg" alt=" " loading="lazy">
+                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/6.jpg" 
+                     alt=" " 
+                     data-description=" "
+                     loading="lazy">
             </div>
             
             <div class="gallery-item">
-                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/img4.jpg" alt=" " loading="lazy">
+                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/img4.jpg" 
+                     alt=" " 
+                     data-description=" "
+                     loading="lazy">
             </div>
             
             <div class="gallery-item wide">
-                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/11.jpg" alt=" " loading="lazy">
+                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/11.jpg" 
+                     alt=" " 
+                     data-description=" " 
+                     loading="lazy">
             </div>
             
             <div class="gallery-item wide">
-                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/img7.jpg" alt=" " loading="lazy">
+                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/img7.jpg" 
+                     alt=" " 
+                     data-description=" "
+                     loading="lazy">
             </div>
           
             
            <div class="gallery-item">
-                <img src="Photoshoots/Runway/img6.webp" alt=" " loading="lazy">
+                <img src="Photoshoots/Runway/img6.webp" 
+                    alt=" " 
+                     data-description=" "
+                     loading="lazy">
             </div>
             
              <div class="gallery-item">
-                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/4.JPG" alt=" " loading="lazy">
+                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/4.JPG" 
+                     alt=" " 
+                     data-description=" "
+                     loading="lazy">
             </div>
             
             <div class="gallery-item tall">
-                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/7.JPG" alt=" " loading="lazy">
+                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/7.JPG" 
+                     alt=" " 
+                     data-description=" "
+                     loading="lazy">
             </div>
                   <div class="gallery-item">
-                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/8.JPG" alt=" " loading="lazy">
+                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/8.JPG" 
+                     alt=" " 
+                     data-description=" "
+                     loading="lazy">
             </div>
             <div class="gallery-item wide">
-                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/img2.JPG" alt=" " loading="lazy">
+                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/img2.JPG" 
+                     alt=" " 
+                     data-description=" "
+                     loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/DS1.jpg" 
+                     alt="The Distorted Self" 
+                     data-description="Makeup Runway Show. As the lead makeup designer for my own runway show I designed 10 different looks, 6 of which had bondo transfers made by me applied onto the face to create the distorted and deformed skin affect, inspired by Benjamin Spiers Paintings" 
+                     loading="lazy">
+            </div>
+             <div class="gallery-item">
+                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/DS2.jpg" 
+                     alt="The Distorted Self" 
+                     data-description="Makeup Runway Show. As the lead makeup designer for my own runway show I designed 10 different looks, 6 of which had bondo transfers made by me applied onto the face to create the distorted and deformed skin affect, inspired by Benjamin Spiers Paintings" 
+                     loading="lazy">
+            </div>
+             <div class="gallery-item">
+                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/DS3.jpeg" 
+                     alt="The Distorted Self" 
+                     data-description="Makeup Runway Show. As the lead makeup designer for my own runway show I designed 10 different looks, 6 of which had bondo transfers made by me applied onto the face to create the distorted and deformed skin affect, inspired by Benjamin Spiers Paintings" 
+                     loading="lazy">
+            </div>
+             <div class="gallery-item">
+                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/DS4.jpeg" 
+                     alt="The Distorted Self" 
+                     data-description="Makeup Runway Show. As the lead makeup designer for my own runway show I designed 10 different looks, 6 of which had bondo transfers made by me applied onto the face to create the distorted and deformed skin affect, inspired by Benjamin Spiers Paintings" 
+                     loading="lazy">
+            </div>
+             <div class="gallery-item">
+                <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/DS5.jpeg" 
+                     alt="The Distorted Self" 
+                     data-description="Makeup Runway Show. As the lead makeup designer for my own runway show I designed 10 different looks, 6 of which had bondo transfers made by me applied onto the face to create the distorted and deformed skin affect, inspired by Benjamin Spiers Paintings" 
+                     loading="lazy">
             </div>
             
         </div>
@@ -512,7 +607,10 @@
             <div class="lightbox-img-container">
                 <div class="lightbox-loading">Loading...</div>
                 <img class="lightbox-img" src="" alt="">
-                <div class="lightbox-caption"></div>
+            </div>
+            <div class="lightbox-text-container">
+                <div class="lightbox-title"></div>
+                <div class="lightbox-description"></div>
             </div>
             <div class="lightbox-nav">
                 <button class="lightbox-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
@@ -568,7 +666,8 @@
         // Lightbox functionality
         const lightbox = document.querySelector('.lightbox');
         const lightboxImg = document.querySelector('.lightbox-img');
-        const lightboxCaption = document.querySelector('.lightbox-caption');
+        const lightboxTitle = document.querySelector('.lightbox-title');
+        const lightboxDescription = document.querySelector('.lightbox-description');
         const lightboxClose = document.querySelector('.lightbox-close');
         const prevBtn = document.querySelector('.prev-btn');
         const nextBtn = document.querySelector('.next-btn');
@@ -605,14 +704,18 @@
             
             const imgSrc = galleryItems[currentIndex].getAttribute('src');
             const imgAlt = galleryItems[currentIndex].getAttribute('alt') || "Image";
+            const imgDescription = galleryItems[currentIndex].getAttribute('data-description') || "";
+            
+            // Set text content
+            lightboxTitle.textContent = imgAlt;
+            lightboxDescription.textContent = imgDescription;
+            
             
             // Load high-quality image
             const highResImg = new Image();
             highResImg.onload = () => {
                 lightboxImg.src = highResImg.src;
                 lightboxImg.alt = imgAlt;
-                lightboxCaption.textContent = imgAlt;
-                lightboxIndex.textContent = `${currentIndex + 1} / ${galleryItems.length}`;
                 
                 setTimeout(() => {
                     lightboxImg.classList.add('active');
@@ -624,8 +727,6 @@
                 // Fallback to original image if high-res fails
                 lightboxImg.src = imgSrc;
                 lightboxImg.alt = imgAlt;
-                lightboxCaption.textContent = imgAlt;
-                lightboxIndex.textContent = `${currentIndex + 1} / ${galleryItems.length}`;
                 
                 setTimeout(() => {
                     lightboxImg.classList.add('active');
