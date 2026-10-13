@@ -1,4 +1,4 @@
- <!-- RUNWAYYYYYYYYYYYYYYY -->
+<!-- RUNWAYYYYYYYYYYYYYYY -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -142,11 +142,10 @@
             font-family: 'Avenir Book', 'Avenir', sans-serif;
         }
         
+        /* Masonry layout: every image keeps its natural proportions */
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            grid-auto-rows: 300px;
-            gap: 20px;
+            column-count: 3;
+            column-gap: 20px;
         }
         
         .gallery-item {
@@ -156,6 +155,8 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
+            break-inside: avoid;
+            margin-bottom: 20px;
         }
         
         .gallery-item:hover {
@@ -165,23 +166,13 @@
         
         .gallery-item img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
             display: block;
             transition: transform 0.5s ease;
         }
         
         .gallery-item:hover img {
             transform: scale(1.05);
-        }
-        
-        /* Size variations */
-        .gallery-item.wide {
-            grid-column: span 2;
-        }
-        
-        .gallery-item.tall {
-            grid-row: span 2;
         }
         
         /* Lightbox Styles */
@@ -363,13 +354,12 @@
         /* Responsive adjustments */
         @media (max-width: 1024px) {
             .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                grid-auto-rows: 250px;
-                gap: 15px;
+                column-count: 2;
+                column-gap: 15px;
             }
             
-            .gallery-item.wide {
-                grid-column: span 1;
+            .gallery-item {
+                margin-bottom: 15px;
             }
             
             .lightbox-title {
@@ -380,9 +370,6 @@
                 font-size: 14px;
             }
         }
-            .gallery-item.focus-top img {
-              object-position: top;
-            }
         
         @media (max-width: 768px) {
             .gallery-header h1 {
@@ -417,8 +404,7 @@
         
         @media (max-width: 480px) {
             .gallery-grid {
-                grid-template-columns: 1fr;
-                grid-auto-rows: 300px;
+                column-count: 1;
             }
             
             header {
@@ -435,10 +421,6 @@
             }
             .sidebar.active {
                 right: 0;
-            }
-            
-            .gallery-item.tall {
-                grid-row: span 1;
             }
             
             .lightbox-img {
@@ -494,103 +476,103 @@
         <div class="gallery-grid">
             <!-- IMAGESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS -->
 
-         <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/HS/HS7.jpg" 
                      alt="LFW SS 2027 - Hibing Selects Urban Grace"
                      data-description=" "
                      loading="lazy">
             </div>
-         <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/HS/HS6.jpg" 
                      alt="LFW SS 2027 - Hibing Selects Urban Grace"
                      data-description=" "
                      loading="lazy">
             </div>
-         <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/HS/HS5.jpg" 
                      alt="LFW SS 2027 - Hibing Selects Urban Grace"
                      data-description=" "
                      loading="lazy">
             </div>
-         <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/HS/HS4.jpg" 
                      alt="LFW SS 2027 - Hibing Selects Urban Grace"
                      data-description=" "
                      loading="lazy">
             </div>
-         <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/HS/HS3.jpg" 
                      alt="LFW SS 2027 - Hibing Selects Urban Grace"
                      data-description=" "
                      loading="lazy">
             </div>
-         <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/HS/HS2.jpg" 
                      alt="LFW SS 2027 - Hibing Selects Urban Grace"
                      data-description=" "
                      loading="lazy">
             </div>
-          <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/HS/HS1.jpg" 
                      alt="LFW SS 2027 - Hibing Selects Urban Grace"
                      data-description=" "
                      loading="lazy">
             </div>
-         <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/Pippa/P5.JPG" 
                      alt="LFW SS 2025 - Pippa Todorson"
                      data-description=" "
                      loading="lazy">
             </div>
-         <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/Pippa/P4.JPG" 
                      alt="LFW SS 2025 - Pippa Todorson"  
                      data-description=" "
                      loading="lazy">
             </div>
-         <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/Pippa/P3.JPG" 
                      alt="LFW SS 2025 - Pippa Todorson"
                      data-description=" "
                      loading="lazy">
             </div>
-         <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/Pippa/P2.JPG" 
                      alt="LFW SS 2025 - Pippa Todorson" 
                      data-description=" "
                      loading="lazy">
             </div>
-         <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/Pippa/P1.JPG" 
                      alt="LFW SS 2025 - Pippa Todorson" 
                      data-description=" "
                      loading="lazy">
             </div>
-             <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/DS1.jpg" 
                      alt="The Distorted Self" 
                      data-description="Makeup Runway Show. As the lead makeup designer for my own runway show I designed 10 different looks, 6 of which had bondo transfers made by me applied onto the face to create the distorted and deformed skin affect, inspired by Benjamin Spiers Paintings" 
                      loading="lazy">
             </div>
-             <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/DS2.jpg" 
                      alt="The Distorted Self" 
                      data-description="Makeup Runway Show. As the lead makeup designer for my own runway show I designed 10 different looks, 6 of which had bondo transfers made by me applied onto the face to create the distorted and deformed skin affect, inspired by Benjamin Spiers Paintings" 
                      loading="lazy">
             </div>
-             <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/DS3.jpeg" 
                      alt="The Distorted Self" 
                      data-description="Makeup Runway Show. As the lead makeup designer for my own runway show I designed 10 different looks, 6 of which had bondo transfers made by me applied onto the face to create the distorted and deformed skin affect, inspired by Benjamin Spiers Paintings" 
                      loading="lazy">
             </div>
-             <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/DS4.jpeg" 
                      alt="The Distorted Self" 
                      data-description="Makeup Runway Show. As the lead makeup designer for my own runway show I designed 10 different looks, 6 of which had bondo transfers made by me applied onto the face to create the distorted and deformed skin affect, inspired by Benjamin Spiers Paintings" 
                      loading="lazy">
             </div>
-             <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/DS5.jpeg" 
                      alt="The Distorted Self" 
                      data-description="Makeup Runway Show. As the lead makeup designer for my own runway show I designed 10 different looks, 6 of which had bondo transfers made by me applied onto the face to create the distorted and deformed skin affect, inspired by Benjamin Spiers Paintings" 
@@ -603,19 +585,19 @@
                      data-description=" "
                      loading="lazy">
             </div>            
-             <div class="gallery-item tall">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/img10.jpg" 
                      alt=" " 
                      data-description=" "
                      loading="lazy">
             </div>
-              <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/img9.jpg" 
                      alt=" " 
                      data-description=" "
                      loading="lazy">
             </div>
-            <div class="gallery-item wide">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/6.jpg" 
                      alt=" " 
                      data-description=" "
@@ -629,55 +611,53 @@
                      loading="lazy">
             </div>
             
-            <div class="gallery-item wide">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/11.jpg" 
                      alt=" " 
                      data-description=" " 
                      loading="lazy">
             </div>
             
-            <div class="gallery-item wide">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/img7.jpg" 
                      alt=" " 
                      data-description=" "
                      loading="lazy">
             </div>
-          
             
-           <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="Photoshoots/Runway/img6.webp" 
-                    alt=" " 
+                     alt=" " 
                      data-description=" "
                      loading="lazy">
             </div>
             
-             <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/4.JPG" 
                      alt=" " 
                      data-description=" "
                      loading="lazy">
             </div>
             
-            <div class="gallery-item tall">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/7.JPG" 
                      alt=" " 
                      data-description=" "
                      loading="lazy">
             </div>
-                  <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/8.JPG" 
                      alt=" " 
                      data-description=" "
                      loading="lazy">
             </div>
-            <div class="gallery-item wide">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Runway/img2.JPG" 
                      alt=" " 
                      data-description=" "
                      loading="lazy">
             </div>
 
-            
         </div>
     </div>
 
@@ -763,19 +743,6 @@
                 currentIndex = index;
                 openLightbox();
             });
-            
-            // Preload images when they're about to be visible
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.getAttribute('src');
-                        observer.unobserve(img);
-                    }
-                });
-            }, { rootMargin: '200px' });
-            
-            observer.observe(item);
         });
         
         function openLightbox() {
@@ -789,7 +756,6 @@
             // Set text content
             lightboxTitle.textContent = imgAlt;
             lightboxDescription.textContent = imgDescription;
-            
             
             // Load high-quality image
             const highResImg = new Image();
@@ -907,39 +873,6 @@
                 navigate(-1);
             }
         }
-        
-        // Auto-size gallery items based on their aspect ratio
-        function sizeGalleryItems() {
-            const items = document.querySelectorAll('.gallery-item');
-            
-            items.forEach(item => {
-                const img = item.querySelector('img');
-                if (img) {
-                    img.onload = function() {
-                        const width = img.naturalWidth;
-                        const height = img.naturalHeight;
-                        const ratio = width / height;
-                        
-                        // Remove all size classes first
-                        item.classList.remove('wide', 'tall');
-                        
-                        // Add appropriate class based on aspect ratio
-                        if (ratio > 1.5) {
-                            item.classList.add('wide');
-                        } else if (ratio < 0.7) {
-                            item.classList.add('tall');
-                        }
-                    };
-                    
-                    // Trigger onload if image is already loaded
-                    if (img.complete) img.onload();
-                }
-            });
-        }
-        
-        // Initialize gallery sizing
-        document.addEventListener('DOMContentLoaded', sizeGalleryItems);
-        window.addEventListener('resize', sizeGalleryItems);
     </script>
 </body>
 </html>
