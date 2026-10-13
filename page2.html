@@ -1,4 +1,4 @@
- <!-- EDITORIALLLLLLLLLLLLLL -->
+<!-- EDITORIALLLLLLLLLLLLLL -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,7 +117,7 @@
             margin-bottom: 10px;
         }
         
-        /* New Gallery Styles */
+        /* Gallery Styles */
         .gallery-container {
             max-width: 1200px;
             margin: 40px auto;
@@ -138,14 +138,16 @@
             font-weight: 300;
             letter-spacing: 2px;
             color: #b21f28;
-             font-family: 'Avenir Book', 'Avenir', sans-serif;
+            font-family: 'Avenir Book', 'Avenir', sans-serif;
         }
         
+        /* Masonry grid: images keep their natural proportions and
+           stay in left-to-right order. JS sets each item's row span. */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            grid-auto-rows: 300px;
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 1px;
+            column-gap: 20px;
         }
         
         .gallery-item {
@@ -155,6 +157,9 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
+            margin-bottom: 20px;
+            grid-row-end: span 400; /* placeholder until the image loads */
+            background-color: #e8e8e8;
         }
         
         .gallery-item:hover {
@@ -164,23 +169,13 @@
         
         .gallery-item img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
             display: block;
             transition: transform 0.5s ease;
         }
         
         .gallery-item:hover img {
             transform: scale(1.05);
-        }
-        
-        /* Size variations */
-        .gallery-item.wide {
-            grid-column: span 2;
-        }
-        
-        .gallery-item.tall {
-            grid-row: span 2;
         }
         
         /* Lightbox Styles */
@@ -261,7 +256,6 @@
             line-height: 1.6;
             opacity: 0.8;
             margin-bottom: 20px;
-            
         }
         
         .lightbox-nav {
@@ -359,21 +353,16 @@
             transform: scale(1.2);
             color: #f8f8f8;
         }
-        .gallery-item.focus-top img{
-          object-position: top;
-
-        }
         
         /* Responsive adjustments */
         @media (max-width: 1024px) {
             .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                grid-auto-rows: 250px;
-                gap: 15px;
+                grid-template-columns: repeat(2, 1fr);
+                column-gap: 15px;
             }
             
-            .gallery-item.wide {
-                grid-column: span 1;
+            .gallery-item {
+                margin-bottom: 15px;
             }
             
             .lightbox-title {
@@ -388,7 +377,6 @@
         @media (max-width: 768px) {
             .gallery-header h1 {
                 font-size: 2rem;
-                
             }
             
             .hero {
@@ -420,7 +408,6 @@
         @media (max-width: 480px) {
             .gallery-grid {
                 grid-template-columns: 1fr;
-                grid-auto-rows: 300px;
             }
             
             header {
@@ -439,10 +426,6 @@
                 right: 0;
             }
             
-            .gallery-item.tall {
-                grid-row: span 1;
-            }
-            
             .lightbox-img {
                 max-height: 60vh;
             }
@@ -458,7 +441,7 @@
             .lightbox-text-container {
                 padding: 0 15px;
             }
-           
+        }
     </style>
 </head>
 <body>
@@ -494,84 +477,79 @@
         </div>
             
         <div class="gallery-grid">
-             <!-- IMAGESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS -->
+            <!-- IMAGESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS -->
 
-         <div class="gallery-item focus-top">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/MinRed/MA1.png" 
-                      alt="Maria in Red" 
+                     alt="Maria in Red" 
                      data-description="Editorial photoshoot for Sophia Adatia (photographer)"
                      loading="lazy">
             </div> 
-         
-          <div class="gallery-item focus-top">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/MinRed/MA2.png" 
-                      alt="Maria in Red" 
+                     alt="Maria in Red" 
                      data-description="Editorial photoshoot for Sophia Adatia (photographer)"
                      loading="lazy">
             </div> 
-         
-             <div class="gallery-item focus-top">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/TDS/J1.jpeg" 
-                      alt="Pryscilla in Gold" 
+                     alt="Pryscilla in Gold" 
                      data-description="Jewellery Photoshoot"
                      loading="lazy">
             </div>   
-         
-             <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/TDS/J2.jpeg" 
-                      alt="Pryscilla in Gold" 
+                     alt="Pryscilla in Gold" 
                      data-description="Jewellery Photoshoot"
                      loading="lazy">
             </div>   
-             <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/TDS/J3.jpg" 
-                      alt="Pryscilla in Gold" 
+                     alt="Pryscilla in Gold" 
                      data-description="Jewellery Photoshoot"
                      loading="lazy">
-             </div>
-                
+            </div>
             <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/TDS/TDS1.jpeg" 
-                      alt="The Distorted Self" 
+                     alt="The Distorted Self" 
                      data-description="Editorial shoot using bondo transfers which deformed and distorted the skin inspired by Benjamin Spiers’ paintings"
                      loading="lazy">
             </div>
-             <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/TDS/TDS2.JPG" 
-                      alt="The Distorted Self" 
+                     alt="The Distorted Self" 
                      data-description="Editorial shoot using bondo transfers which deformed and distorted the skin inspired by Benjamin Spiers’ paintings"
                      loading="lazy">
             </div>
-               <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/TDS/TDS4.JPG" 
-                      alt="The Distorted Self" 
+                     alt="The Distorted Self" 
                      data-description="Editorial shoot using bondo transfers which deformed and distorted the skin inspired by Benjamin Spiers’ paintings"
                      loading="lazy">
             </div>
             <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/TDS/TDS3.JPG" 
-                      alt="The Distorted Self" 
+                     alt="The Distorted Self" 
                      data-description="Editorial shoot using bondo transfers which deformed and distorted the skin inspired by Benjamin Spiers’ paintings"
                      loading="lazy">
             </div>
             <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/TDS/TDS5.JPG" 
-                      alt="The Distorted Self" 
+                     alt="The Distorted Self" 
                      data-description="Editorial shoot using bondo transfers which deformed and distorted the skin inspired by Benjamin Spiers’ paintings"
                      loading="lazy">
             </div>
             <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/TDS/TDS6.JPG" 
-                      alt="The Distorted Self" 
+                     alt="The Distorted Self" 
                      data-description="Editorial shoot using bondo transfers which deformed and distorted the skin inspired by Benjamin Spiers’ paintings"
                      loading="lazy">
             </div>
             <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/TDS/TDS7.JPG" 
-                      alt="The Distorted Self" 
+                     alt="The Distorted Self" 
                      data-description="Editorial shoot using bondo transfers which deformed and distorted the skin inspired by Benjamin Spiers’ paintings"
                      loading="lazy">
-    
             </div>   
             <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/1.jpg" 
@@ -581,7 +559,7 @@
             </div>
             <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/2.jpg" 
-                      alt="Primary Colors" 
+                     alt="Primary Colors" 
                      data-description="This project focused on the concept of primary shapes and colors for the context of a magazine cover."
                      loading="lazy">
             </div>
@@ -593,19 +571,19 @@
             </div>
             <div class="gallery-item">
                 <img src="Photoshoots/Fashion&Editorial/4.webp" 
-                      alt="Primary Colors" 
+                     alt="Primary Colors" 
                      data-description="This project focused on the concept of primary shapes and colors for the context of a magazine cover."
                      loading="lazy">
             </div>
             <div class="gallery-item">
                 <img src="Photoshoots/Fashion&Editorial/6.webp" 
-                      alt="Primary Colors" 
+                     alt="Primary Colors" 
                      data-description="This project focused on the concept of primary shapes and colors for the context of a magazine cover."
                      loading="lazy">
             </div>
             <div class="gallery-item">
                 <img src="Photoshoots/Fashion&Editorial/6.webp" 
-                      alt="Primary Colors" 
+                     alt="Primary Colors" 
                      data-description="This project focused on the concept of primary shapes and colors for the context of a magazine cover."
                      loading="lazy">
             </div>
@@ -615,43 +593,43 @@
                      data-description="This project focused on the theme of fantasy creatures, this one specifically regarding a witch. The context is for a fashion styling publication." 
                      loading="lazy">
             </div>
-             <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/Witch/3.jpg" 
                      alt="Spell Caster" 
                      data-description="This project focused on the theme of fantasy creatures, this one specifically regarding a witch. The context is for a fashion styling publication." 
                      loading="lazy">
             </div>
-             <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/Witch/4.jpg" 
                      alt="Spell Caster" 
                      data-description="This project focused on the theme of fantasy creatures, this one specifically regarding a witch. The context is for a fashion styling publication."
                      loading="lazy">
             </div>
-             <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/Witch/5.jpg" 
-                    alt="Spell Caster" 
+                     alt="Spell Caster" 
                      data-description="This project focused on the theme of fantasy creatures, this one specifically regarding a witch. The context is for a fashion styling publication." 
                      loading="lazy">
             </div>
-             <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/Witch/6.jpg" 
                      alt="Spell Caster" 
                      data-description="This project focused on the theme of fantasy creatures, this one specifically regarding a witch. The context is for a fashion styling publication." 
                      loading="lazy">
             </div>
-             <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/Witch/7.jpg" 
                      alt="Spell Caster" 
                      data-description="This project focused on the theme of fantasy creatures, this one specifically regarding a witch. The context is for a fashion styling publication." 
                      loading="lazy">
             </div>
-             <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/Witch/8.jpg" 
                      alt="Spell Caster" 
                      data-description="This project focused on the theme of fantasy creatures, this one specifically regarding a witch. The context is for a fashion styling publication." 
                      loading="lazy">
             </div>
-             <div class="gallery-item">
+            <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/Witch/9.jpg" 
                      alt="Spell Caster" 
                      data-description="This project focused on the theme of fantasy creatures, this one specifically regarding a witch. The context is for a fashion styling publication." 
@@ -683,7 +661,7 @@
             </div>
             <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/19.JPG" 
-                    alt="Pryscilla" 
+                     alt="Pryscilla" 
                      data-description="A fashion shoot for Pryscilla’s modeling portfolio" 
                      loading="lazy">
             </div>
@@ -725,7 +703,7 @@
             </div>
             <div class="gallery-item">
                 <img src="https://ik.imagekit.io/v9iz34ylq/Photoshoots/Fashion&Editorial/24.JPG" 
-                    alt="The Sit of Joy" 
+                     alt="The Sit of Joy" 
                      data-description="This location photoshoot focused on promoting the clothing line of Ruth Taviansky." 
                      loading="lazy">
             </div>
@@ -825,6 +803,30 @@
         const lightboxLoading = document.querySelector('.lightbox-loading');
         
         let currentIndex = 0;
+
+        // Masonry layout: size each tile to its image's real proportions
+        // while keeping left-to-right order
+        function sizeItem(item) {
+            const img = item.querySelector('img');
+            if (!img || !img.complete || !img.naturalWidth) return;
+            const gap = parseFloat(getComputedStyle(item).marginBottom) || 0;
+            const height = item.offsetWidth * img.naturalHeight / img.naturalWidth;
+            item.style.gridRowEnd = 'span ' + Math.ceil(height + gap);
+        }
+
+        function layoutGallery() {
+            document.querySelectorAll('.gallery-item').forEach(sizeItem);
+        }
+
+        galleryItems.forEach(img => {
+            if (img.complete) {
+                sizeItem(img.parentElement);
+            } else {
+                img.addEventListener('load', () => sizeItem(img.parentElement));
+            }
+        });
+
+        window.addEventListener('resize', layoutGallery);
         
         // Open lightbox with clicked image
         galleryItems.forEach((item, index) => {
@@ -832,19 +834,6 @@
                 currentIndex = index;
                 openLightbox();
             });
-            
-            // Preload images when they're about to be visible
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.getAttribute('src');
-                        observer.unobserve(img);
-                    }
-                });
-            }, { rootMargin: '200px' });
-            
-            observer.observe(item);
         });
         
         function openLightbox() {
@@ -858,7 +847,6 @@
             // Set text content
             lightboxTitle.textContent = imgAlt;
             lightboxDescription.textContent = imgDescription;
-            
             
             // Load high-quality image
             const highResImg = new Image();
@@ -976,39 +964,6 @@
                 navigate(-1);
             }
         }
-        
-        // Auto-size gallery items based on their aspect ratio
-        function sizeGalleryItems() {
-            const items = document.querySelectorAll('.gallery-item');
-            
-            items.forEach(item => {
-                const img = item.querySelector('img');
-                if (img) {
-                    img.onload = function() {
-                        const width = img.naturalWidth;
-                        const height = img.naturalHeight;
-                        const ratio = width / height;
-                        
-                        // Remove all size classes first
-                        item.classList.remove('wide', 'tall');
-                        
-                        // Add appropriate class based on aspect ratio
-                        if (ratio > 1.5) {
-                            item.classList.add('wide');
-                        } else if (ratio < 0.7) {
-                            item.classList.add('tall');
-                        }
-                    };
-                    
-                    // Trigger onload if image is already loaded
-                    if (img.complete) img.onload();
-                }
-            });
-        }
-        
-        // Initialize gallery sizing
-        document.addEventListener('DOMContentLoaded', sizeGalleryItems);
-        window.addEventListener('resize', sizeGalleryItems);
     </script>
 </body>
 </html>
