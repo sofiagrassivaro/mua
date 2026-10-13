@@ -142,9 +142,12 @@
             font-family: 'Avenir Book', 'Avenir', sans-serif;
         }
         
-        /* Masonry layout: every image keeps its natural proportions */
+        /* Masonry grid: images keep their natural proportions and
+           stay in left-to-right order. JS sets each item's row span. */
         .gallery-grid {
-            column-count: 3;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 1px;
             column-gap: 20px;
         }
         
@@ -155,8 +158,9 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
-            break-inside: avoid;
             margin-bottom: 20px;
+            grid-row-end: span 400; /* placeholder until the image loads */
+            background-color: #e8e8e8;
         }
         
         .gallery-item:hover {
@@ -354,7 +358,7 @@
         /* Responsive adjustments */
         @media (max-width: 1024px) {
             .gallery-grid {
-                column-count: 2;
+                grid-template-columns: repeat(2, 1fr);
                 column-gap: 15px;
             }
             
@@ -404,7 +408,7 @@
         
         @media (max-width: 480px) {
             .gallery-grid {
-                column-count: 1;
+                grid-template-columns: 1fr;
             }
             
             header {
@@ -736,6 +740,30 @@
         const lightboxLoading = document.querySelector('.lightbox-loading');
         
         let currentIndex = 0;
+
+        // Masonry layout: size each tile to its image's real proportions
+        // while keeping left-to-right order
+        function sizeItem(item) {
+            const img = item.querySelector('img');
+            if (!img || !img.complete || !img.naturalWidth) return;
+            const gap = parseFloat(getComputedStyle(item).marginBottom) || 0;
+            const height = item.offsetWidth * img.naturalHeight / img.naturalWidth;
+            item.style.gridRowEnd = 'span ' + Math.ceil(height + gap);
+        }
+
+        function layoutGallery() {
+            document.querySelectorAll('.gallery-item').forEach(sizeItem);
+        }
+
+        galleryItems.forEach(img => {
+            if (img.complete) {
+                sizeItem(img.parentElement);
+            } else {
+                img.addEventListener('load', () => sizeItem(img.parentElement));
+            }
+        });
+
+        window.addEventListener('resize', layoutGallery);
         
         // Open lightbox with clicked image
         galleryItems.forEach((item, index) => {
