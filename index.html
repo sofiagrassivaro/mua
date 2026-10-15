@@ -174,21 +174,24 @@ header.scrolled .hamburger div {
     text-transform: uppercase;
 }
 
+/* Justified row: JS gives each item a width share equal to its
+   image's aspect ratio, so all images end up the same height
+   and are shown in full. */
 .gallery-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
     gap: 15px;
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
-    align-items: start;
+    align-items: flex-start;
 }
 
-/* Each image shows in full at its natural proportions */
 .gallery-item {
     position: relative;
     overflow: hidden;
     border-radius: 4px;
+    flex: 1 1 0;
+    min-width: 0;
     transition: all 0.4s cubic-bezier(0.25, 0.45, 0.45, 0.95);
     cursor: pointer;
 }
@@ -491,17 +494,6 @@ footer {
 
 
 /* ============================= */
-/* TABLET                         */
-/* ============================= */
-
-@media (max-width: 1024px) {
-    .gallery-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-
-/* ============================= */
 /* MOBILE RESPONSIVENESS          */
 /* ============================= */
 
@@ -526,10 +518,15 @@ footer {
         letter-spacing: 0.3em;
     }
 
-    /* Gallery */
+    /* Gallery: stack the images, each full width and uncropped */
     .gallery-container {
-        grid-template-columns: 1fr;
+        flex-direction: column;
         gap: 10px;
+    }
+
+    .gallery-item {
+        flex: none !important;
+        width: 100%;
     }
 
     .about-artist {
@@ -749,6 +746,43 @@ footer {
         const lightboxLoading = document.querySelector('.lightbox-loading');
         
         let currentIndex = 0;
+
+        // Publications row: same height for every image, nothing cropped.
+        // Each item's width share = its image's aspect ratio.
+        const galleryContainer = document.querySelector('.gallery-container');
+        const TARGET_HEIGHT = 710; // max image height on wide screens
+
+        function layoutPublications() {
+            let ratioSum = 0;
+            let allLoaded = true;
+
+            galleryItems.forEach(img => {
+                if (!img.naturalWidth) {
+                    allLoaded = false;
+                    return;
+                }
+                const ratio = img.naturalWidth / img.naturalHeight;
+                img.parentElement.style.flexGrow = ratio;
+                ratioSum += ratio;
+            });
+
+            if (!allLoaded) return;
+
+            // Limit the row width so images are at most TARGET_HEIGHT tall
+            const styles = getComputedStyle(galleryContainer);
+            const gap = parseFloat(styles.columnGap) || 0;
+            const padding = parseFloat(styles.paddingLeft) + parseFloat(styles.paddingRight);
+            const rowWidth = TARGET_HEIGHT * ratioSum + gap * (galleryItems.length - 1) + padding;
+            galleryContainer.style.maxWidth = Math.min(rowWidth, 1400) + 'px';
+        }
+
+        galleryItems.forEach(img => {
+            if (img.complete) {
+                layoutPublications();
+            } else {
+                img.addEventListener('load', layoutPublications);
+            }
+        });
         
         // Open lightbox with clicked image
         galleryItems.forEach((item, index) => {
